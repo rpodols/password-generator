@@ -8,7 +8,7 @@ var symbols = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", 
 var generatePassword = function() {
   //console.log("Button has been clicked.");
   var c = 0;
-  var promptPasswordLength = window.prompt("How many characters should the password be?  Please select a number between or equal to 8 and 128.");
+  var promptPasswordLength = window.prompt("How many characters should the password be?  Please select a number 8 - 128.");
     
   if (promptPasswordLength > 128 || promptPasswordLength < 8 || promptPasswordLength === "" || promptPasswordLength === null) {
       window.alert("Please select a number between 8 and 128.");
@@ -40,7 +40,7 @@ var generatePassword = function() {
       generatePassword();
     }
     const characterArray = [];
-    for (i = 0; i < (promptPasswordLength/c); i++) {
+    for (i = 0; i < (promptPasswordLength); i++) {
       if (isLowerCase) {
         characterArray.push(lowerCase[Math.floor(Math.random() * lowerCase.length)]);
       }
@@ -53,8 +53,13 @@ var generatePassword = function() {
       if (includeSymbols) {
         characterArray.push(symbols[Math.floor(Math.random() * symbols.length)]);
       }
+      var newpass = characterArray.join("");
+      password = newpass.slice(0, promptPasswordLength);
+    
+     
+   
     }
-    password = characterArray.join('');
+//  take the password length, and divide it by c, then print it
   return password;
 }
 
